@@ -157,7 +157,7 @@
         <File Id="log4net.dll" 
               Name="log4net.dll" 
               DiskId="1"
-              Source="$(var.SolutionDir)packages\log4net.2.0.3\lib\net40-full\log4net.dll" />
+              Source="$(var.SolutionDir)packages\log4net.2.0.5\lib\net40-full\log4net.dll" />
         <RemoveFile Name="log4net.dll" Id="log4net.dll" On="uninstall" />
 
         <File Id="Microsoft.Threading.Tasks.dll"
