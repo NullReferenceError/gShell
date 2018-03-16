@@ -272,11 +272,12 @@
 
     <UIRef Id="WixUI_Minimal" />
     <UIRef Id="WixUI_ErrorProgressText" />
+  <!-- These are all missing from git repo   
     <Icon Id="gShell.ico" SourceFile="$(var.gShell.ProjectDir)/InstallerFiles/gShell.ico" />
     <Property Id="ARPPRODUCTICON" Value="gShell.ico" />
     <WixVariable Id="WixUILicenseRtf" Value="$(var.gShell.ProjectDir)/InstallerFiles/gShellLicense.rtf"/>
     <WixVariable Id="WixUIDialogBmp" Value="$(var.gShell.ProjectDir)/InstallerFiles/gShellInstallerBackground.bmp"/>
-    <WixVariable Id="WixUIBannerBmp" Value="$(var.gShell.ProjectDir)/InstallerFiles/gShellInstallerTopBanner.bmp"/>
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.gShell.ProjectDir)/InstallerFiles/gShellInstallerTopBanner.bmp"/>-->
 
   </Product>
 </Wix>
