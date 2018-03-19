@@ -270,8 +270,10 @@
       -->
     </Feature>
 
-    <UIRef Id="WixUI_Minimal" />
     <UIRef Id="WixUI_ErrorProgressText" />
+    <UIRef Id="WixUI_InstallDir" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+      
   <!-- These are all missing from git repo   
     <Icon Id="gShell.ico" SourceFile="$(var.gShell.ProjectDir)/InstallerFiles/gShell.ico" />
     <Property Id="ARPPRODUCTICON" Value="gShell.ico" />
