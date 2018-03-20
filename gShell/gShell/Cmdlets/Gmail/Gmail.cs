@@ -1464,7 +1464,7 @@ namespace gShell.Cmdlets.Gmail.Users.Drafts
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(users.drafts.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Drafts).ToList());
+                    WriteObject(users.drafts.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Drafts != null).SelectMany(x => x.Drafts).ToList());
                 }
                 else
                 {
@@ -1676,7 +1676,7 @@ namespace gShell.Cmdlets.Gmail.Users.History
 
             if (ShouldProcess("Gmail User History", "Get-GGmailHistory"))
             {
-                WriteObject(users.history.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.History).ToList());
+                WriteObject(users.history.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.History != null).SelectMany(x => x.History).ToList());
             }
         }
     }
@@ -2262,7 +2262,7 @@ namespace gShell.Cmdlets.Gmail.Users.Messages
                     
                     if (this.LabelIds != null) properties.LabelIds = this.LabelIds;
                     if (MaxResults.HasValue) properties.TotalResults = this.MaxResults.Value;
-                    WriteObject(users.messages.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Messages).ToList());
+                    WriteObject(users.messages.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Messages != null).SelectMany(x => x.Messages).ToList());
                 }
                 else
                 {
@@ -2853,7 +2853,7 @@ namespace gShell.Cmdlets.Gmail.Users.Threads
                     if (this.LabelIds != null) properties.LabelIds = this.LabelIds;
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
-                    WriteObject(users.threads.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Threads).ToList());
+                    WriteObject(users.threads.List(UserId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Threads != null).SelectMany(x => x.Threads).ToList());
 
                 }
                 else

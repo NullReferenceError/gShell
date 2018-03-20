@@ -2531,7 +2531,7 @@ namespace gShell.Cmdlets.Directory.GAChromeosdevice
 
                         if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                        WriteObject(chromeosdevices.List(CustomerId, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Chromeosdevices).ToList());
+                        WriteObject(chromeosdevices.List(CustomerId, properties, StandardQueryParams: StandardQueryParams).Where(x => x.Chromeosdevices != null).SelectMany(x => x.Chromeosdevices).ToList());
                         break;
                 }
             }
@@ -3393,7 +3393,7 @@ namespace gShell.Cmdlets.Directory.GAGroup
 
                         if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                        WriteObject(groups.List(properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.GroupsValue).ToList());
+                        WriteObject(groups.List(properties, StandardQueryParams: StandardQueryParams).Where(x => x.GroupsValue != null).SelectMany(x => x.GroupsValue).ToList());
                     }
                     break;
                 case "OneGroup":
@@ -3420,7 +3420,7 @@ namespace gShell.Cmdlets.Directory.GAGroup
 
                         if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                        WriteObject(groups.List(properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.GroupsValue).ToList());
+                        WriteObject(groups.List(properties, StandardQueryParams: StandardQueryParams).Where(x => x.GroupsValue != null).SelectMany(x => x.GroupsValue).ToList());
                     }
                     break;
             }
@@ -4044,7 +4044,7 @@ namespace gShell.Cmdlets.Directory.GAGroupMember
                     };
 
                     GroupName = GetFullEmailAddress(GroupName, authUserInfo);
-                    WriteObject(members.List(GroupName, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.MembersValue).ToList());
+                    WriteObject(members.List(GroupName, properties, StandardQueryParams: StandardQueryParams).Where(x => x.MembersValue != null).SelectMany(x => x.MembersValue).ToList());
                 }
             }
         }
@@ -4490,7 +4490,7 @@ namespace gShell.Cmdlets.Directory.GAMobileDevice
 
                         if (MaxResults.HasValue) properties.MaxResults = MaxResults.Value;
 
-                        WriteObject(mobiledevices.List(CustomerId, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Mobiledevices).ToList());
+                        WriteObject(mobiledevices.List(CustomerId, properties, StandardQueryParams: StandardQueryParams).Where(x => x.Mobiledevices != null).SelectMany(x => x.Mobiledevices).ToList());
                         break;
                 }
             }
@@ -4751,7 +4751,7 @@ namespace gShell.Cmdlets.Directory.GANotification
 
                         if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                        WriteObject(notifications.List(Customer, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                        WriteObject(notifications.List(Customer, properties, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
                         break;
                 }
             }
@@ -5503,7 +5503,7 @@ namespace gShell.Cmdlets.Directory.GACalendar
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(resources.calendars.List(Customer, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                    WriteObject(resources.calendars.List(Customer, properties, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
                 }
             }
 
@@ -5794,7 +5794,7 @@ namespace gShell.Cmdlets.Directory.GARole
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(roles.List(Customer, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                    WriteObject(roles.List(Customer, properties, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
                 }
             }
         }
@@ -6080,7 +6080,7 @@ namespace gShell.Cmdlets.Directory.GARoleAssignment
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(roleAssignments.List(Customer, properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                    WriteObject(roleAssignments.List(Customer, properties, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
                 }
             }
         }
@@ -6819,7 +6819,7 @@ namespace gShell.Cmdlets.Directory.GAUser
                         if (!string.IsNullOrWhiteSpace(this.Domain)) listproperties.Customer = this.Domain;
 
                         //Make sure to include the domain here because List could use things other than domain (customer, etc)
-                        List<Data.User> result = users.List(listproperties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.UsersValue).ToList();
+                        List<Data.User> result = users.List(listproperties, StandardQueryParams: StandardQueryParams).Where(x => x.UsersValue != null).SelectMany(x => x.UsersValue).ToList();
 
                         WriteObject(GShellUserObject.ConvertList(result));
                     }

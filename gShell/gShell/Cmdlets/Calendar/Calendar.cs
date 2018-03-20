@@ -1985,7 +1985,7 @@ namespace gShell.Cmdlets.Calendar.Acl
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(acl.List(CalendarId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                    WriteObject(acl.List(CalendarId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
                 }
             }
         }
@@ -2401,7 +2401,7 @@ namespace gShell.Cmdlets.Calendar.CalendarList
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(calendarList.List(properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                    WriteObject(calendarList.List(properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
                 }
             }
         }
@@ -3367,7 +3367,7 @@ namespace gShell.Cmdlets.Calendar.Events
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    var results = events.List(CalendarId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList();
+                    var results = events.List(CalendarId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList();
 
                     WriteObject(results);
                 }
@@ -4427,7 +4427,7 @@ namespace gShell.Cmdlets.Calendar.Settings
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(settings.List(properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items.ToList()));
+                    WriteObject(settings.List(properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items.ToList()));
                 }
             }
         }

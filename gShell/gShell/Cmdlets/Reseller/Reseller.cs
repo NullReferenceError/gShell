@@ -1669,7 +1669,7 @@ namespace gShell.Cmdlets.Reseller.Subscription
 
                 if (ShouldProcess("Reseller Subscription", "Get-GResellerSubscription"))
                 {
-                    WriteObject(subscriptions.List(properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.SubscriptionsValue).ToList());
+                    WriteObject(subscriptions.List(properties, StandardQueryParams: StandardQueryParams).Where(x => x.SubscriptionsValue != null).SelectMany(x => x.SubscriptionsValue).ToList());
                 }
             }
         }

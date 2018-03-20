@@ -2616,7 +2616,7 @@ namespace gShell.Cmdlets.Classroom.Courses
                         PageSize = PageSize
                     };
 
-                    WriteObject(courses.List(properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).SelectMany(x => x.Courses).ToList());
+                    WriteObject(courses.List(properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).Where(x => x.Courses != null).SelectMany(x => x.Courses).ToList());
                 }
             }
         }
@@ -2885,7 +2885,7 @@ namespace gShell.Cmdlets.Classroom.Courses.Aliases
                     PageSize = PageSize
                 };
 
-                WriteObject(courses.aliases.List(CourseId, properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).SelectMany(x => x.Aliases).ToList());
+                WriteObject(courses.aliases.List(CourseId, properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).Where(x => x.Aliases != null).SelectMany(x => x.Aliases).ToList());
             }
         }
     }
@@ -3134,7 +3134,7 @@ namespace gShell.Cmdlets.Classroom.Courses.Students
                         PageSize = PageSize
                     };
 
-                    WriteObject(courses.students.List(CourseId, properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).SelectMany(x => x.Students).ToList());
+                    WriteObject(courses.students.List(CourseId, properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).Where(x => x.Students != null).SelectMany(x => x.Students).ToList());
                 }
             }
         }
@@ -3367,7 +3367,7 @@ namespace gShell.Cmdlets.Classroom.Courses.Teachers
                         PageSize = PageSize
                     };
 
-                    WriteObject(courses.teachers.List(CourseId, properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).SelectMany(x => x.Teachers).ToList());
+                    WriteObject(courses.teachers.List(CourseId, properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).Where(x => x.Teachers != null).SelectMany(x => x.Teachers).ToList());
                 }
             }
         }
@@ -3628,7 +3628,7 @@ namespace gShell.Cmdlets.Classroom.Invitations
                         PageSize = PageSize
                     };
 
-                    WriteObject(invitations.List(properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).SelectMany(x => x.Invitations).ToList());
+                    WriteObject(invitations.List(properties, StandardQueryParams: StandardQueryParams, ServiceAccount: gShellServiceAccount).Where(x => x.Invitations != null).SelectMany(x => x.Invitations).ToList());
                 }
             }
         }

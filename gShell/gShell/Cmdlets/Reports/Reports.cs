@@ -798,7 +798,7 @@ namespace gShell.Cmdlets.Reports.GRepActivity
                 //Allow for the use of 'all'
                 string _userKey = (UserKey == "all") ? "all" : GetFullEmailAddress(UserKey, authUserInfo);
 
-                WriteObject(activities.List(_userKey, ApplicationName.ToString(), properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Items).ToList());
+                WriteObject(activities.List(_userKey, ApplicationName.ToString(), properties, StandardQueryParams: StandardQueryParams).Where(x => x.Items != null).SelectMany(x => x.Items).ToList());
             }
         }
     }

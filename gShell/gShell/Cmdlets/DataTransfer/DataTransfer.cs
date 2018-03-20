@@ -431,7 +431,7 @@ namespace gShell.Cmdlets.DataTransfer.Applications
                     if (ShouldProcess("DataTransfer Applicaiton", "Get-GDataTransferApplication"))
                     {
                         List<Application> results =
-                            applications.List(properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Applications).ToList();
+                            applications.List(properties, StandardQueryParams: StandardQueryParams).Where(x => x.Applications != null).SelectMany(x => x.Applications).ToList();
 
                         WriteObject(results);
                     }
@@ -561,7 +561,7 @@ namespace gShell.Cmdlets.DataTransfer.Transfers
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(transfers.List(properties, StandardQueryParams: StandardQueryParams).SelectMany(x => x.DataTransfers).ToList());
+                    WriteObject(transfers.List(properties, StandardQueryParams: StandardQueryParams).Where(x => x.DataTransfers != null).SelectMany(x => x.DataTransfers).ToList());
                 }
             }
         }

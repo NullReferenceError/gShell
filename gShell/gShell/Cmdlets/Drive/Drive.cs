@@ -2211,7 +2211,7 @@ namespace gShell.Cmdlets.Drive.Comments
                         StartModifiedTime = StartModifiedTime
                     };
 
-                    WriteObject(comments.List(FileId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Comments).ToList());
+                    WriteObject(comments.List(FileId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Comments != null).SelectMany(x => x.Comments).ToList());
                 }
             }
         }
@@ -2859,7 +2859,7 @@ namespace gShell.Cmdlets.Drive.Files
 
                     if (MaxResults.HasValue) properties.TotalResults = MaxResults.Value;
 
-                    WriteObject(files.List(properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Files).ToList());
+                    WriteObject(files.List(properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Files != null).SelectMany(x => x.Files).ToList());
                 }
             }
         }
@@ -3546,7 +3546,7 @@ namespace gShell.Cmdlets.Drive.Replies
                         PageSize = PageSize
                     };
 
-                    WriteObject(replies.List(FileId, CommentId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Replies).ToList());
+                    WriteObject(replies.List(FileId, CommentId, properties, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Replies != null).SelectMany(x => x.Replies).ToList());
                 }
             }
         }
@@ -3718,7 +3718,7 @@ namespace gShell.Cmdlets.Drive.Revisions
                 }
                 else
                 {
-                    WriteObject(revisions.List(FileId, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).SelectMany(x => x.Revisions).ToList());
+                    WriteObject(revisions.List(FileId, ServiceAccount: gShellServiceAccount, StandardQueryParams: StandardQueryParams).Where(x => x.Revisions != null).SelectMany(x => x.Revisions).ToList());
                 }
             }
         }
